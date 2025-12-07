@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6403f2fb7414441f92da13946caf7502" Name="Diagram1">
+        <EntityTypeShape EntityType="NewTechModel.Materials" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.MaterialType" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.Partners" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.PartnerType" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.Products" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.ProductType" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.RequestItems" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.Requests" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewTechModel.ProductMaterials" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="NewTechModel.FK__Materials__Mater__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__ProductMa__Mater__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__Partners__Partne__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__Requests__Partne__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__ProductMa__Produ__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__Products__Produc__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__RequestIt__Produ__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="NewTechModel.FK__RequestIt__Reque__5441852A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

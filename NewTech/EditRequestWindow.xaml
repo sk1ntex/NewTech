@@ -1,0 +1,100 @@
+﻿<Window x:Class="NewTech.EditRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавить / Редактировать заявку" Height="650" Width="820"
+        FontFamily="Bahnschrift Light SemiCondensed"
+        Icon="resources/icon.ico"
+        Background="White"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="12" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Форма заявки" FontSize="20" FontWeight="Bold" Foreground="#0C4882" />
+
+        <!-- Партнёрские поля -->
+        <Grid Grid.Row="1" Margin="0 10 0 10" Background="#BBDCFA">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0 0 10 0">
+                <TextBlock Text="Тип партнёра" />
+                <ComboBox x:Name="PartnerTypeCombo" DisplayMemberPath="Name" SelectedValuePath="Id" />
+
+                <TextBlock Text="Наименование" Margin="0 8 0 0"/>
+                <TextBox x:Name="NameBox"/>
+
+                <TextBlock Text="ФИО директора" Margin="0 8 0 0"/>
+                <TextBox x:Name="DirectorBox"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10 0 0 0">
+                <TextBlock Text="Адрес" />
+                <TextBox x:Name="AddressBox"/>
+
+                <TextBlock Text="Рейтинг (целое неотрицательное)" Margin="0 8 0 0"/>
+                <TextBox x:Name="RatingBox"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 8 0 0">
+                    <StackPanel Width="180">
+                        <TextBlock Text="Телефон" />
+                        <TextBox x:Name="PhoneBox"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="12 0 0 0" Width="196">
+                        <TextBlock Text="Email" />
+                        <TextBox x:Name="EmailBox" Margin="0,0,8,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Таблица товаров заявки -->
+        <GroupBox Header="Товары в заявке" Grid.Row="2" Margin="0 8 0 8" Padding="6" BorderBrush="#0C4882">
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="0 0 0 8" >
+                    <Button x:Name="AddItemBtn" Content="Добавить товар" Width="120" Click="AddItemBtn_Click" Background="#0C4882" Foreground="White"/>
+                    <Button x:Name="RemoveItemBtn" Content="Удалить выбранный" Width="140" Margin="8 0 0 0" Background="#0C4882" Foreground="White" Click="RemoveItemBtn_Click"/>
+                </StackPanel>
+
+                <DataGrid x:Name="ItemsGrid" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" IsReadOnly="False">
+                    <DataGrid.Columns>
+                        <!-- Продукт: ComboBox колонка -->
+                        <DataGridTemplateColumn Header="Продукт" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Products.Name}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.ProductsForCombo, RelativeSource={RelativeSource AncestorType=Window}}"
+                                              DisplayMemberPath="Name"
+                                              SelectedValuePath="Id"
+                                              SelectedValue="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Количество" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </GroupBox>
+
+        <!-- Кнопки Сохранить / Отмена -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 8 0 0">
+            <Button Content="Сохранить" Width="110" Height="34" Margin="0 0 8 0" Click="SaveBtn_Click" Background="#0C4882" Foreground="White"/>
+            <Button Content="Отмена" Width="90" Height="34" Background="#0C4882" Foreground="White" Click="CancelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
